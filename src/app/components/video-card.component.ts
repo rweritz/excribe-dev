@@ -14,7 +14,7 @@ import { VideoService } from '../services/video.service';
       <div class="absolute inset-0">
         <img
           [src]="'assets/videos/' + video.thumbnail"
-          [alt]="video.title"
+          [alt]="video.hoverTitle"
           class="w-full h-full object-cover"
         />
       </div>
@@ -30,10 +30,10 @@ import { VideoService } from '../services/video.service';
       >
         <div class="text-center text-white p-6 max-w-sm">
           <h4 class="text-2xl font-bold mb-4 leading-tight">
-            {{ video.hoverTitle || video.title }}
+            {{ video.hoverTitle }}
           </h4>
           <p class="text-base mb-6 opacity-90 leading-relaxed">
-            {{ video.hoverDescription || video.description }}
+            {{ video.hoverDescription }}
           </p>
           <button
             class="bg-white/20 border border-white/30 text-white px-6 py-3 rounded-lg font-medium hover:bg-white/30 transition-all duration-200 backdrop-blur-sm"

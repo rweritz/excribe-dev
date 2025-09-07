@@ -1,11 +1,6 @@
 export interface VideoItem {
   id: string;
-  title: string;
-  description: string;
   thumbnail: string;
-  tags: string[];
-  author: string;
-  authorHandle: string;
   url: string;
   hoverTitle?: string;
   hoverDescription?: string;

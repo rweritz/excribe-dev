@@ -1,25 +1,22 @@
 import { Component, inject, signal, computed, effect } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { LayoutComponent } from '../../components/layout.component';
+import { PageHeaderComponent } from '../../components/page-header.component';
+import { BlogCardComponent } from '../../components/blog-card.component';
 import { injectContentFiles, ContentFile } from '@analogjs/content';
-
-// Blog post interface matching the frontmatter structure
-export interface BlogPost {
-  title: string;
-  date: string;
-  excerpt: string;
-  tags: string[];
-  slug: string;
-}
+import { BlogPost } from '../../types/common.types';
 
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [RouterLink, LayoutComponent],
+  imports: [LayoutComponent, PageHeaderComponent, BlogCardComponent],
   template: `
     <app-layout>
       <div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold text-gray-900 mb-8">Blog</h1>
+        <app-page-header
+          title="Blog"
+          description="Thoughts, tutorials, and insights on web development"
+        >
+        </app-page-header>
 
         @if (loading()) {
         <div class="text-center py-8">
@@ -36,40 +33,7 @@ export interface BlogPost {
 
         <div class="space-y-8">
           @for (post of posts(); track post.slug) {
-          <article
-            class="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow"
-          >
-            <div class="flex items-center justify-between mb-4">
-              <time class="text-sm text-gray-500">{{ post.date }}</time>
-              <div class="flex space-x-2">
-                @for (tag of post.tags; track tag) {
-                <span
-                  class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded"
-                >
-                  {{ tag }}
-                </span>
-                }
-              </div>
-            </div>
-
-            <h2 class="text-2xl font-bold text-gray-900 mb-3">
-              <a
-                [routerLink]="['/blog', post.slug]"
-                class="hover:text-blue-600 transition-colors"
-              >
-                {{ post.title }}
-              </a>
-            </h2>
-
-            <p class="text-gray-600 mb-4">{{ post.excerpt }}</p>
-
-            <a
-              [routerLink]="['/blog', post.slug]"
-              class="text-blue-600 hover:text-blue-800 font-medium"
-            >
-              Read more →
-            </a>
-          </article>
+          <app-blog-card [post]="post"></app-blog-card>
           }
         </div>
       </div>

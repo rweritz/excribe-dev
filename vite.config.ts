@@ -21,6 +21,7 @@ export default defineConfig(({ mode }) => ({
             '/',
             '/about',
             '/blog',
+            '/videos',
             '/contact',
             // Add specific blog post routes if known
           ];

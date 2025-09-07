@@ -1,4 +1,3 @@
-// src/app/pages/blog/[slug].page.ts
 import {
   Component,
   OnInit,
@@ -17,15 +16,7 @@ import {
 } from '@analogjs/content';
 import { SeoService } from '../../services/seo.service';
 import { toSignal } from '@angular/core/rxjs-interop';
-
-// Blog post interface matching the frontmatter structure
-export interface BlogPost {
-  title: string;
-  date: string;
-  excerpt: string;
-  tags: string[];
-  slug: string;
-}
+import { BlogPost } from '../../types/common.types';
 
 @Component({
   selector: 'app-blog-post',

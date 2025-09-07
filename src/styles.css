@@ -1,8 +1,65 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+@import "./styles/tokens.css";
 
 /* You can add global styles to this file, and also import other style files */
 html,
 body {
   display: block;
   height: 100%;
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  color: white;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* Custom gradient background */
+.gradient-bg {
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 50%, #1a202c 100%);
+  min-height: 100vh;
+}
+
+/* Profile image styling with gradient border */
+.profile-image {
+  background: linear-gradient(135deg, #9f7aea 0%, #667eea 50%, #764ba2 100%);
+  border-radius: 50%;
+  padding: 4px;
+}
+
+/* Smooth transitions */
+* {
+  transition: color var(--transition-base);
+}
+
+/* Video card hover effects */
+.video-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.video-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  transition: all var(--transition-slow);
+  z-index: 1;
+}
+
+.video-card:hover::before {
+  filter: brightness(1.1) saturate(1.2);
+}
+
+/* Backdrop blur support */
+@supports (backdrop-filter: blur(10px)) {
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+}
+
+@supports not (backdrop-filter: blur(10px)) {
+  .backdrop-blur-sm {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 }

@@ -1,34 +1,45 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { NAVIGATION_ITEMS, SITE_CONFIG } from '../config/navigation.config';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
   imports: [RouterLink, CommonModule],
   template: `
-    <nav class="bg-white shadow-sm border-b">
+    <nav
+      class="bg-gray-800 bg-opacity-80 backdrop-blur-sm border-b border-gray-700"
+    >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
           <div class="flex items-center">
-            <a routerLink="/" class="text-xl font-bold text-gray-900">
-              Your Name
+            <a routerLink="/" class="text-xl font-bold text-white">
+              {{ siteConfig.name }}
             </a>
           </div>
 
           <!-- Desktop Navigation -->
           <div class="hidden md:flex items-center space-x-8">
-            <a routerLink="/" class="text-gray-700 hover:text-gray-900">Home</a>
-            <a routerLink="/about" class="text-gray-700 hover:text-gray-900"
-              >About</a
+            <!-- Temporary direct navigation for testing -->
+            <a
+              routerLink="/"
+              class="text-gray-300 hover:text-white transition-colors"
+              >Home</a
             >
-            <a routerLink="/projects" class="text-gray-700 hover:text-gray-900"
-              >Projects</a
+            <a
+              routerLink="/videos"
+              class="text-gray-300 hover:text-white transition-colors"
+              >Videos</a
             >
-            <a routerLink="/blog" class="text-gray-700 hover:text-gray-900"
+            <a
+              routerLink="/blog"
+              class="text-gray-300 hover:text-white transition-colors"
               >Blog</a
             >
-            <a routerLink="/contact" class="text-gray-700 hover:text-gray-900"
+            <a
+              routerLink="/contact"
+              class="text-gray-300 hover:text-white transition-colors"
               >Contact</a
             >
           </div>
@@ -37,7 +48,7 @@ import { CommonModule } from '@angular/common';
           <div class="md:hidden flex items-center">
             <button
               (click)="toggleMobileMenu()"
-              class="text-gray-700 hover:text-gray-900"
+              class="text-gray-300 hover:text-white"
             >
               <svg
                 class="h-6 w-6"
@@ -59,41 +70,39 @@ import { CommonModule } from '@angular/common';
         <!-- Mobile Navigation -->
         <div [class.hidden]="!mobileMenuOpen" class="md:hidden">
           <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <!-- Temporary direct navigation for testing -->
             <a
               routerLink="/"
-              class="block px-3 py-2 text-gray-700 hover:text-gray-900"
+              class="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
               >Home</a
             >
             <a
-              routerLink="/about"
-              class="block px-3 py-2 text-gray-700 hover:text-gray-900"
-              >About</a
-            >
-            <a
-              routerLink="/projects"
-              class="block px-3 py-2 text-gray-700 hover:text-gray-900"
-              >Projects</a
+              routerLink="/videos"
+              class="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
+              >Videos</a
             >
             <a
               routerLink="/blog"
-              class="block px-3 py-2 text-gray-700 hover:text-gray-900"
+              class="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
               >Blog</a
             >
             <a
               routerLink="/contact"
-              class="block px-3 py-2 text-gray-700 hover:text-gray-900"
+              class="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
               >Contact</a
             >
           </div>
         </div>
       </div>
     </nav>
-    <main class="min-h-screen bg-gray-50">
+    <main class="min-h-screen gradient-bg">
       <ng-content></ng-content>
     </main>
   `,
 })
 export class LayoutComponent {
+  navigationItems = NAVIGATION_ITEMS;
+  siteConfig = SITE_CONFIG;
   mobileMenuOpen = false;
 
   toggleMobileMenu() {

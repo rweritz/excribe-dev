@@ -26,7 +26,47 @@ module.exports = {
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: "none",
+            color: "#d1d5db", // gray-300
+            a: {
+              color: "#60a5fa", // blue-400
+              textDecoration: "none",
+              "&:hover": {
+                color: "#93c5fd", // blue-300
+              },
+            },
+            h1: {
+              color: "#ffffff",
+            },
+            h2: {
+              color: "#ffffff",
+            },
+            h3: {
+              color: "#ffffff",
+            },
+            h4: {
+              color: "#ffffff",
+            },
+            strong: {
+              color: "#ffffff",
+            },
+            code: {
+              color: "#93c5fd", // blue-300
+              backgroundColor: "#111827", // gray-900
+              padding: "0.25rem",
+              borderRadius: "0.25rem",
+            },
+            blockquote: {
+              borderLeftColor: "#60a5fa", // blue-400
+              color: "#d1d5db", // gray-300
+            },
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

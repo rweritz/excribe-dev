@@ -66,6 +66,30 @@
   background-clip: text;
 }
 
+/* Blog-specific gradient text hover effect */
+.hover\:text-gradient:hover {
+  background: linear-gradient(135deg, #9f7aea 0%, #667eea 50%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Enhanced card styles for dark theme */
+.card-dark {
+  background: rgba(31, 41, 55, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgb(55, 65, 81);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  transition: all var(--transition-base);
+}
+
+.card-dark:hover {
+  background: rgba(31, 41, 55, 0.8);
+  border-color: rgb(75, 85, 99);
+  box-shadow: var(--shadow-lg);
+}
+
 .btn-primary {
   display: inline-block;
   background-color: var(--color-primary-600);

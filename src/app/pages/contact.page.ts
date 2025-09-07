@@ -21,14 +21,16 @@ import { SITE_CONFIG } from '../config/navigation.config';
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Contact Information -->
             <div class="space-y-6">
-              <div class="card">
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">
+              <div
+                class="bg-gray-800 bg-opacity-60 backdrop-blur-sm border border-gray-700 rounded-lg p-6"
+              >
+                <h3 class="text-xl font-semibold text-white mb-4">
                   Connect With Me
                 </h3>
                 <div class="space-y-4">
                   <div class="flex items-center space-x-3">
                     <svg
-                      class="w-5 h-5 text-blue-600"
+                      class="w-5 h-5 text-blue-400"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -40,14 +42,14 @@ import { SITE_CONFIG } from '../config/navigation.config';
                       href="https://twitter.com/rweritz"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="text-gray-700 hover:text-blue-600 transition-colors"
+                      class="text-gray-300 hover:text-blue-400 transition-colors"
                     >
                       {{ siteConfig.handle }}
                     </a>
                   </div>
                   <div class="flex items-center space-x-3">
                     <svg
-                      class="w-5 h-5 text-blue-600"
+                      class="w-5 h-5 text-blue-400"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -60,14 +62,14 @@ import { SITE_CONFIG } from '../config/navigation.config';
                       href="https://github.com/rweritz"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="text-gray-700 hover:text-blue-600 transition-colors"
+                      class="text-gray-300 hover:text-blue-400 transition-colors"
                     >
                       GitHub
                     </a>
                   </div>
                   <div class="flex items-center space-x-3">
                     <svg
-                      class="w-5 h-5 text-blue-600"
+                      class="w-5 h-5 text-blue-400"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -79,14 +81,14 @@ import { SITE_CONFIG } from '../config/navigation.config';
                       href="https://linkedin.com/in/rweritz"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="text-gray-700 hover:text-blue-600 transition-colors"
+                      class="text-gray-300 hover:text-blue-400 transition-colors"
                     >
                       LinkedIn
                     </a>
                   </div>
                   <div class="flex items-center space-x-3">
                     <svg
-                      class="w-5 h-5 text-red-600"
+                      class="w-5 h-5 text-red-400"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >

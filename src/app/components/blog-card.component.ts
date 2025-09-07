@@ -8,36 +8,42 @@ import { BlogPost } from '../types/common.types';
   standalone: true,
   imports: [RouterLink, CommonModule],
   template: `
-    <article class="card hover:shadow-md transition-shadow">
+    <article
+      class="bg-gray-800 bg-opacity-60 backdrop-blur-sm border border-gray-700 rounded-lg p-6 hover:bg-opacity-80 hover:border-gray-600 transition-all duration-300 group"
+    >
       <div class="flex items-center justify-between mb-4">
-        <time class="text-sm text-gray-500">{{ post.date }}</time>
+        <time class="text-sm text-gray-400">{{ post.date }}</time>
         <div class="flex space-x-2">
           @for (tag of post.tags; track tag) {
-          <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">
+          <span
+            class="px-3 py-1 bg-gradient-to-r from-purple-500 to-blue-500 text-white text-xs rounded-full font-medium"
+          >
             {{ tag }}
           </span>
           }
         </div>
       </div>
 
-      <h2 class="text-2xl font-bold text-gray-900 mb-3">
+      <h2
+        class="text-2xl font-bold text-white mb-3 group-hover:text-gradient transition-all duration-300"
+      >
         <a
           [routerLink]="['/blog', post.slug]"
-          class="hover:text-blue-600 transition-colors"
+          class="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-purple-400 hover:to-blue-400"
         >
           {{ post.title }}
         </a>
       </h2>
 
-      <p class="text-gray-600 mb-4">{{ post.excerpt }}</p>
+      <p class="text-gray-300 mb-6 leading-relaxed">{{ post.excerpt }}</p>
 
       <a
         [routerLink]="['/blog', post.slug]"
-        class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center"
+        class="inline-flex items-center text-blue-400 hover:text-blue-300 font-medium transition-colors group-hover:translate-x-1 transform duration-300"
       >
         Read more
         <svg
-          class="ml-2 w-4 h-4"
+          class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1 duration-300"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

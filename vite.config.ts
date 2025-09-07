@@ -13,8 +13,21 @@ export default defineConfig(({ mode }) => ({
     mainFields: ['module'],
   },
   plugins: [
-    analog(),
-    tailwindcss()
+    analog({
+      ssr: true,
+      prerender: {
+        routes: async () => {
+          return [
+            '/',
+            '/about',
+            '/blog',
+            '/contact',
+            // Add specific blog post routes if known
+          ];
+        },
+      },
+    }),
+    tailwindcss(),
   ],
   test: {
     globals: true,

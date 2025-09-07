@@ -1,47 +1,54 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, signal, computed, effect } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LayoutComponent } from '../../components/layout.component';
-import { GitHubService, BlogPost } from '../../services/github.service';
-import { forkJoin, map } from 'rxjs';
+import { injectContentFiles, ContentFile } from '@analogjs/content';
+
+// Blog post interface matching the frontmatter structure
+export interface BlogPost {
+  title: string;
+  date: string;
+  excerpt: string;
+  tags: string[];
+  slug: string;
+}
 
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [CommonModule, RouterLink, LayoutComponent],
+  imports: [RouterLink, LayoutComponent],
   template: `
     <app-layout>
       <div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <h1 class="text-3xl font-bold text-gray-900 mb-8">Blog</h1>
 
-        <div *ngIf="loading()" class="text-center py-8">
+        @if (loading()) {
+        <div class="text-center py-8">
           <div
             class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"
           ></div>
           <p class="mt-4 text-gray-600">Loading posts...</p>
         </div>
-
-        <div
-          *ngIf="!loading() && posts().length === 0"
-          class="text-center py-8"
-        >
+        } @if (!loading() && posts().length === 0) {
+        <div class="text-center py-8">
           <p class="text-gray-600">No blog posts found.</p>
         </div>
+        }
 
         <div class="space-y-8">
+          @for (post of posts(); track post.slug) {
           <article
-            *ngFor="let post of posts()"
             class="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow"
           >
             <div class="flex items-center justify-between mb-4">
               <time class="text-sm text-gray-500">{{ post.date }}</time>
               <div class="flex space-x-2">
+                @for (tag of post.tags; track tag) {
                 <span
-                  *ngFor="let tag of post.tags"
                   class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded"
                 >
                   {{ tag }}
                 </span>
+                }
               </div>
             </div>
 
@@ -63,53 +70,39 @@ import { forkJoin, map } from 'rxjs';
               Read more →
             </a>
           </article>
+          }
         </div>
       </div>
     </app-layout>
   `,
 })
-export default class BlogComponent implements OnInit {
-  private githubService = inject(GitHubService);
+export default class BlogComponent {
+  // Use injectContentFiles to load all blog posts from content/blog directory
+  private contentFiles = injectContentFiles<BlogPost>();
 
-  posts = signal<BlogPost[]>([]);
-  loading = signal(true);
+  posts = computed(() => {
+    const contentFiles = this.contentFiles;
 
-  ngOnInit() {
-    this.loadBlogPosts();
-  }
+    if (!Array.isArray(contentFiles)) return [];
 
-  private loadBlogPosts() {
-    this.githubService.getBlogPosts().subscribe((files) => {
-      console.log('Files received:', files);
-      if (files.length === 0) {
-        this.loading.set(false);
-        return;
-      }
+    // Filter only blog posts and transform to blog posts with slug
+    const blogPosts: BlogPost[] = contentFiles
+      .filter((file: ContentFile<BlogPost>) =>
+        file.filename.includes('/content/blog/')
+      )
+      .map((file: ContentFile<BlogPost>) => ({
+        ...file.attributes,
+        slug: file.slug,
+      }));
 
-      // Fetch content for each markdown file
-      const postObservables = files.map((file) =>
-        this.githubService
-          .getBlogPost(file.name)
-          .pipe(
-            map((content) =>
-              content
-                ? this.githubService.parseBlogPost(content, file.name)
-                : null
-            )
-          )
-      );
+    // Sort by date (newest first)
+    return blogPosts.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+  });
 
-      forkJoin(postObservables).subscribe((posts) => {
-        console.log('Posts processed:', posts);
-        const validPosts = posts.filter((post) => post !== null) as BlogPost[];
-        // Sort by date (newest first)
-        validPosts.sort(
-          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-        );
-        this.posts.set(validPosts);
-        this.loading.set(false);
-        console.log('Final posts array:', validPosts);
-      });
-    });
-  }
+  loading = computed(() => {
+    const files = this.contentFiles;
+    return !Array.isArray(files) || files.length === 0;
+  });
 }

@@ -2,18 +2,19 @@ export interface NavigationItem {
   label: string;
   route: string;
   icon?: string;
+  isAnchor?: boolean;
 }
 
 export const NAVIGATION_ITEMS: NavigationItem[] = [
   { label: 'Home', route: '/' },
+  { label: 'About', route: '/#about', isAnchor: true },
   { label: 'Videos', route: '/videos' },
   { label: 'Blog', route: '/blog' },
-  { label: 'Contact', route: '/contact' },
 ];
 
 export const SITE_CONFIG = {
   name: 'EXCRIBE.DEV',
-  author: 'Rüdiger Weritz',
+  author: 'Rüdiger',
   handle: '@RWERITZ',
   tagline: 'A Tech Enthusiast',
   description:

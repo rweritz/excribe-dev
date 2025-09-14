@@ -14,8 +14,12 @@ import { NAVIGATION_ITEMS, SITE_CONFIG } from '../config/navigation.config';
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
           <div class="flex items-center">
-            <a routerLink="/" class="text-xl font-bold text-white">
-              {{ siteConfig.name }}
+            <a
+              routerLink="/"
+              class="flex items-center space-x-2 text-xl font-bold text-white"
+            >
+              <img src="/assets/xc.png" alt="Excribe Logo" class="h-8 w-8" />
+              <span>{{ siteConfig.name }}</span>
             </a>
           </div>
 
@@ -28,6 +32,11 @@ import { NAVIGATION_ITEMS, SITE_CONFIG } from '../config/navigation.config';
               >Home</a
             >
             <a
+              href="#about"
+              class="text-gray-300 hover:text-white transition-colors"
+              >About</a
+            >
+            <a
               routerLink="/videos"
               class="text-gray-300 hover:text-white transition-colors"
               >Videos</a
@@ -36,11 +45,6 @@ import { NAVIGATION_ITEMS, SITE_CONFIG } from '../config/navigation.config';
               routerLink="/blog"
               class="text-gray-300 hover:text-white transition-colors"
               >Blog</a
-            >
-            <a
-              routerLink="/contact"
-              class="text-gray-300 hover:text-white transition-colors"
-              >Contact</a
             >
           </div>
 
@@ -77,6 +81,12 @@ import { NAVIGATION_ITEMS, SITE_CONFIG } from '../config/navigation.config';
               >Home</a
             >
             <a
+              href="#about"
+              class="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
+              (click)="closeMobileMenu()"
+              >About</a
+            >
+            <a
               routerLink="/videos"
               class="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
               >Videos</a
@@ -85,11 +95,6 @@ import { NAVIGATION_ITEMS, SITE_CONFIG } from '../config/navigation.config';
               routerLink="/blog"
               class="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
               >Blog</a
-            >
-            <a
-              routerLink="/contact"
-              class="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
-              >Contact</a
             >
           </div>
         </div>
@@ -107,5 +112,9 @@ export class LayoutComponent {
 
   toggleMobileMenu() {
     this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
+
+  closeMobileMenu() {
+    this.mobileMenuOpen = false;
   }
 }

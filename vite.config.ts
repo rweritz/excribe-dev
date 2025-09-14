@@ -19,7 +19,6 @@ export default defineConfig(({ mode }) => ({
         routes: async () => {
           return [
             '/',
-            '/about',
             '/blog',
             '/videos',
             '/contact',

@@ -7,7 +7,6 @@ export interface NavigationItem {
 
 export const NAVIGATION_ITEMS: NavigationItem[] = [
   { label: 'Home', route: '/' },
-  { label: 'About', route: '/#about', isAnchor: true },
   { label: 'Videos', route: '/videos' },
   { label: 'Blog', route: '/blog' },
 ];

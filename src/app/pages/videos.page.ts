@@ -18,8 +18,7 @@ import { VideoService } from '../services/video.service';
     <app-layout>
       <div class="min-h-screen px-3 sm:px-4 md:px-6 lg:px-8 py-8 sm:py-12">
         <div class="max-w-7xl mx-auto">
-          <app-page-header subtitle="VIDEOS" title="What I've Created">
-          </app-page-header>
+          <app-page-header subtitle="VIDEOS" title="What I've Recorded" />
 
           <!-- Video Grid -->
           <div

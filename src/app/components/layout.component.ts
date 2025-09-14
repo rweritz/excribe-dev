@@ -32,11 +32,6 @@ import { NAVIGATION_ITEMS, SITE_CONFIG } from '../config/navigation.config';
               >Home</a
             >
             <a
-              href="#about"
-              class="text-gray-300 hover:text-white transition-colors"
-              >About</a
-            >
-            <a
               routerLink="/videos"
               class="text-gray-300 hover:text-white transition-colors"
               >Videos</a
@@ -79,12 +74,6 @@ import { NAVIGATION_ITEMS, SITE_CONFIG } from '../config/navigation.config';
               routerLink="/"
               class="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
               >Home</a
-            >
-            <a
-              href="#about"
-              class="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
-              (click)="closeMobileMenu()"
-              >About</a
             >
             <a
               routerLink="/videos"

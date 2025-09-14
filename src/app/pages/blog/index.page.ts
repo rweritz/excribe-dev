@@ -12,11 +12,7 @@ import { BlogPost } from '../../types/common.types';
   template: `
     <app-layout>
       <div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <app-page-header
-          title="Blog"
-          description="Thoughts, tutorials, and insights on web development"
-        >
-        </app-page-header>
+        <app-page-header subtitle="Blog" title="What I've Written" />
 
         @if (loading()) {
         <div class="text-center py-8">

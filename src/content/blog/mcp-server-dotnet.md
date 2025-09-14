@@ -2,7 +2,7 @@
 title: "MCP Server with .NET"
 date: "2025-09-14"
 excerpt: "Building a Remote MCP Server with .NET"
-tags: ["mcp", "dotnet", "http"]
+tags: ["MCP", ".Net", "http"]
 ---
 
 # Building a Remote MCP Server with .NET

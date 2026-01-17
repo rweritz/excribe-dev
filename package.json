@@ -42,7 +42,7 @@
     "@analogjs/vite-plugin-angular": "^1.20.2",
     "@analogjs/vitest-angular": "^1.20.2",
     "@angular/build": "^20.0.0",
-    "@angular/cli": "^20.0.0",
+    "@angular/cli": "^21.1.0",
     "@angular/compiler-cli": "^20.0.0",
     "jsdom": "^22.0.0",
     "typescript": "~5.8.0",

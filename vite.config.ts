@@ -15,6 +15,12 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     analog({
       ssr: true,
+      content: {
+        highlighter: 'prism',
+        prismOptions: {
+          additionalLangs: ['csharp', 'dockerfile', 'bicep', 'ini', 'powershell'],
+        },
+      },
       prerender: {
         routes: async () => {
           return [

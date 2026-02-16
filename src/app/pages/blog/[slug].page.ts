@@ -82,7 +82,7 @@ import { BlogPost } from '../../types/common.types';
         </div>
         } @if (!loading() && !error() && post()) {
         <article
-          class="bg-gray-800 bg-opacity-60 backdrop-blur-sm border border-gray-700 rounded-lg p-8"
+          class="bg-gray-800 bg-opacity-60 backdrop-blur-sm border border-gray-700 rounded-lg p-8 text-left"
         >
           <header class="mb-8">
             <div class="flex items-center justify-between mb-6">
@@ -112,7 +112,7 @@ import { BlogPost } from '../../types/common.types';
           </header>
 
           <div
-            class="prose lg:prose-xl prose-invert max-w-none prose-headings:text-white prose-p:text-gray-300 prose-a:text-blue-400 prose-a:no-underline hover:prose-a:text-blue-300 prose-strong:text-white prose-code:text-blue-300 prose-code:bg-gray-900 prose-code:px-1 prose-code:rounded prose-blockquote:border-l-blue-400 prose-blockquote:text-gray-300"
+            class="prose lg:prose-xl prose-invert max-w-none break-words prose-headings:text-white prose-p:text-gray-300 prose-a:text-blue-400 prose-a:no-underline hover:prose-a:text-blue-300 prose-strong:text-white prose-code:text-blue-300 prose-code:bg-gray-900 prose-code:px-1 prose-code:rounded prose-blockquote:border-l-blue-400 prose-blockquote:text-gray-300"
           >
             <analog-markdown [content]="post()!.content"></analog-markdown>
           </div>

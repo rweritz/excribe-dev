@@ -152,8 +152,11 @@ export default class BlogPostComponent implements OnInit {
 
       if (content) {
         // Update SEO
+        const formattedTitle = this.seoService.formatTitle(
+          content.attributes.title
+        );
         this.seoService.updateMetaTags({
-          title: `${content.attributes.title} - Your Portfolio`,
+          title: formattedTitle,
           description: content.attributes.excerpt,
           keywords: content.attributes.tags.join(', '),
         });

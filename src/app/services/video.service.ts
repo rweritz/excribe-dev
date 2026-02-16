@@ -13,6 +13,7 @@ export class VideoService {
       hoverTitle:
         'How to run Backstage locally and create a new service template',
       hoverDescription: 'Backstage | dotnet | docker',
+      tags: ['Backstage', 'dotnet', 'docker'],
     },
     {
       id: 'docker',
@@ -21,6 +22,7 @@ export class VideoService {
       hoverTitle:
         'How to create a small and secure .NET 6 Web API docker image',
       hoverDescription: 'dotnet | docker | trivy',
+      tags: ['dotnet', 'docker', 'trivy'],
     },
     {
       id: 'distributed',
@@ -28,6 +30,7 @@ export class VideoService {
       url: 'https://www.youtube.com/watch?v=5YtAUk7k9bY',
       hoverTitle: 'How to use a distributed lock in a .NET application',
       hoverDescription: 'dotnet | DistributedLock',
+      tags: ['dotnet', 'DistributedLock'],
     },
   ];
 

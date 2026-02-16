@@ -7,6 +7,16 @@ import { Title, Meta } from '@angular/platform-browser';
 export class SeoService {
   private title = inject(Title);
   private meta = inject(Meta);
+  private readonly siteName = 'eXcribe.DEV';
+  private readonly siteHandle = '@rweritz';
+
+  formatTitle(pageTitle: string): string {
+    return `${this.siteName} | ${pageTitle} | ${this.siteHandle}`;
+  }
+
+  updatePageTitle(pageTitle: string) {
+    this.title.setTitle(this.formatTitle(pageTitle));
+  }
 
   updateTitle(title: string) {
     this.title.setTitle(title);

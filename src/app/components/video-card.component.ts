@@ -31,11 +31,11 @@ import { VideoService } from '../services/video.service';
         <div
           class="text-center text-white p-3 sm:p-4 md:p-6 max-w-xs sm:max-w-sm"
         >
-          <h4
+          <h3
             class="text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 lg:mb-4 leading-tight"
           >
             {{ video.hoverTitle }}
-          </h4>
+          </h3>
           <p
             class="text-sm sm:text-base mb-4 sm:mb-6 opacity-90 leading-relaxed"
           >

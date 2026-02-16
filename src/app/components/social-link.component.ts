@@ -17,6 +17,8 @@ export interface SocialIcon {
       [href]="url"
       target="_blank"
       rel="noopener noreferrer"
+      [attr.aria-label]="text"
+      [attr.title]="text"
       [class]="
         'block hover:scale-110 transition-transform duration-200 ' + linkClass
       "

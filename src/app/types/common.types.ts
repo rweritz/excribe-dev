@@ -4,6 +4,7 @@ export interface VideoItem {
   url: string;
   hoverTitle?: string;
   hoverDescription?: string;
+  tags: string[];
 }
 
 export interface BlogPost {

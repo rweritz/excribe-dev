@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LayoutComponent } from '../components/layout.component';
 import { PageHeaderComponent } from '../components/page-header.component';
 import { SITE_CONFIG } from '../config/navigation.config';
+import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-contact',
@@ -147,5 +148,10 @@ import { SITE_CONFIG } from '../config/navigation.config';
   `,
 })
 export default class ContactComponent {
+  private seoService = inject(SeoService);
   siteConfig = SITE_CONFIG;
+
+  constructor() {
+    this.seoService.updatePageTitle('Contact');
+  }
 }
